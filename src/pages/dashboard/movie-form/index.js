@@ -68,7 +68,6 @@ const MovieForm = ({ history }) => {
     createMovie({ variables: { title: values.title } });
     addToast("Saved Successfully", { appearance: "success" });
     history.push("/dashboard");
-    console.log("response", response);
   };
 
   return (
@@ -82,7 +81,6 @@ const MovieForm = ({ history }) => {
             title: "",
           }}
           onSubmit={(values, actions) => {
-            console.log(values);
             handleCreateMovie(values);
             actions.setSubmitting(false);
           }}
