@@ -1,0 +1,7 @@
+:root {
+  /* Header vars */
+  --header-height: 6rem;
+  --header-padding: 1.5rem 1rem;
+  --header-height-mobile: 4.5rem;
+  --header-padding-mobile: 1rem;
+}

@@ -1,1 +1,4 @@
 @import "./base/_global.css";
+@import "./base/_variables.css";
+@import "./base/_colors.css";
+@import "./base/_shadows.css";
