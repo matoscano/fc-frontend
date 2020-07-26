@@ -31,6 +31,15 @@ const LogoWrapper = styled.div`
   padding: 2rem;
 `;
 
+const Footer = styled.p`
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+`;
+
 const Landing = () => {
   return (
     <Container>
@@ -42,6 +51,14 @@ const Landing = () => {
       <LogoWrapper>
         <FilmChainLogo />
       </LogoWrapper>
+
+      <Footer>
+        Made with{" "}
+        <span role="img" aria-label="fire">
+          &#10084;&#65039;
+        </span>{" "}
+        by <strong>Miguel Angel Toscano</strong> 
+      </Footer>
     </Container>
   );
 };
