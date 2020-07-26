@@ -14,7 +14,7 @@ const baseLinkCss = css`
   box-shadow: inset 1px 100px 1px #110c12;
   border-radius: 50px;
   width: fit-content;
-  padding: 1.5rem 2rem;
+  padding: 0.6rem 2rem;
   border: 2px solid transparent;
   transition: all 150ms ease-in-out;
 

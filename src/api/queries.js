@@ -20,7 +20,18 @@ const GET_ALL_TRANSFER_BY_MOVIE = gql`
   }
 `;
 
-{
-}
+const GET_ALL_SHAREHOLDERS_BY_MOVIE = gql`
+  query getAllShareholdersByMovie($movieId: ID!) {
+    getAllShareholdersByMovie(movieId: $movieId) {
+      id
+      firstName
+      lastName
+    }
+  }
+`;
 
-export { GET_ALL_MOVIES, GET_ALL_TRANSFER_BY_MOVIE };
+export {
+  GET_ALL_MOVIES,
+  GET_ALL_TRANSFER_BY_MOVIE,
+  GET_ALL_SHAREHOLDERS_BY_MOVIE,
+};

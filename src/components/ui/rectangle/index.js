@@ -7,6 +7,7 @@ const Container = styled.div`
   border-radius: var(--rectangle-border-radius);
   background-color: var(--color-white);
   padding: var(--rectangle-padding);
+  width: 100%;
 
   ${(props) => props.additionalStyle};
 `;
