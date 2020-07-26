@@ -1,8 +1,49 @@
 import React from "react";
 import styled from "styled-components";
+import FilmChainVideo from "../../assets/videos/filmchain-hero.mp4";
+
+import FilmChainLogo from "../../components/ui/filmchain-logo";
+
+const Container = styled.section`
+  position: relative;
+  min-height: 100vh;
+`;
+
+const VideoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -10;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  display: block;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 2rem;
+`;
 
 const Landing = () => {
-  return <div>Landing component</div>;
+  return (
+    <Container>
+      <VideoWrapper>
+        <video playsinline="true" autoplay="true" muted="true" loop="true">
+          <source src={FilmChainVideo} type="video/mp4" />
+        </video>
+      </VideoWrapper>
+      <LogoWrapper>
+        <FilmChainLogo />
+      </LogoWrapper>
+    </Container>
+  );
 };
 
 export default Landing;
