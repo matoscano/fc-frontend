@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import breakpoints from "../../../assets/styles/base/breakpoints";
 
 const LinkUnderlineEffect = css`
@@ -69,11 +69,9 @@ const NavBarLink = styled.a`
 const NavBarLinks = ({ open }) => {
   return (
     <NavBarLinksContainer>
-      <Router>
-        <NavBarLink as={Link} to="/wallet">
-          Wallet
-        </NavBarLink>
-      </Router>
+      <NavBarLink as={Link} to="/wallet/sdaf">
+        Wallet
+      </NavBarLink>
     </NavBarLinksContainer>
   );
 };

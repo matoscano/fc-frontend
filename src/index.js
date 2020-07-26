@@ -6,14 +6,17 @@ import client from "./api/index";
 import "./assets/styles/app.css";
 import Routes from "./router";
 import * as serviceWorker from "./serviceWorker";
+import { ToastProvider } from "react-toast-notifications";
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <BrowserRouter>
+    <ToastProvider>
       <React.StrictMode>
-        <Routes />
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
       </React.StrictMode>
-    </BrowserRouter>
+    </ToastProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

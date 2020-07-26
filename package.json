@@ -6,11 +6,13 @@
     "@apollo/client": "^3.0.2",
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "express": "^4.17.1",
+    "formik": "^2.1.5",
     "graphql": "^15.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toast-notifications": "^2.4.0",
     "styled-components": "^5.1.1"
   },
   "scripts": {

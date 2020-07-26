@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Header from "../index";
+import Button from "../index";
 
-describe("Header", () => {
+describe("Button", () => {
   it("renders correctly", () => {
-    const { asFragment } = render(<Header />);
+    const { asFragment } = render(<Button onClick={() => null} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

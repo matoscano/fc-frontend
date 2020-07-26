@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Card 1`] = `
+<div>
+  <div
+    class="sc-AxjAm gSmVHv"
+  >
+    <img
+      alt="img movie"
+      src="https://via.placeholder.com/150"
+      title="Image movie"
+    />
+    <div
+      class="sc-AxirZ PPwbL"
+    >
+      Body
+    </div>
+  </div>
+</div>
+`;

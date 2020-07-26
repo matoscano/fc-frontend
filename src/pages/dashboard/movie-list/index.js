@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css } from "styled-components";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_MOVIES } from "../../../api/queries";
 import Rectangle from "../../../components/ui/rectangle";
+import Card from "../../../components/ui/card";
 import Link from "../../../components/ui/link";
 import { Link as routerLink } from "react-router-dom";
 
 const Container = styled.section`
   position: relative;
 `;
+
+const MoviesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 1rem;
+`;
+
 const Title = styled.h1`
   font-size: var(--text-xxxl);
   text-align: center;
@@ -29,8 +37,10 @@ const NewMovieBtn = styled(Link)`
   right: 1rem;
 `;
 
-const MovieList = () => {
-  const { loading, error, data } = useQuery(GET_ALL_MOVIES);
+const MovieList = ({ match }) => {
+  const { loading, error, data } = useQuery(GET_ALL_MOVIES, {
+    fetchPolicy: "network-only",
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -44,13 +54,17 @@ const MovieList = () => {
         </span>
       </Title>
       <Rectangle additionalStyle={additionalStyle}>
-        {data.getAllMovies.map((movie) => (
-          <div key={movie.id}>
-            <p>{movie.title}</p>
-          </div>
-        ))}
+        <MoviesContainer>
+          {data.getAllMovies.map((movie) => (
+            <Card key={movie.id}>
+              <p>{movie.title}</p>
+            </Card>
+          ))}
+        </MoviesContainer>
       </Rectangle>
-      <NewMovieBtn>New</NewMovieBtn>
+      <NewMovieBtn as={routerLink} to={`${match.url}/create-movie`}>
+        New
+      </NewMovieBtn>
     </Container>
   );
 };
