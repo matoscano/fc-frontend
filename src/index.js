@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import client from "./api/index";
-import "./index.css";
-import App from "./App";
+import "./assets/styles/app.css";
+import Routes from "./router";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
       <React.StrictMode>
-        <App />
+        <Routes />
       </React.StrictMode>
     </BrowserRouter>
   </ApolloProvider>,
