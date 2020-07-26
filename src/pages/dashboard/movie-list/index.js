@@ -37,6 +37,21 @@ const NewMovieBtn = styled(Link)`
   right: 1rem;
 `;
 
+const CardContent = styled.div``;
+
+const CardContentTitle = styled.div`
+  font-size: 1.2rem;
+  font-weight: bold;
+`;
+
+const CardContentLink = styled.a`
+  text-decoration: none;
+  color: var(--color-brand-secondary);
+  margin-top: 1rem;
+  display: block;
+  text-align: end;
+`;
+
 const MovieList = ({ match }) => {
   const { loading, error, data } = useQuery(GET_ALL_MOVIES, {
     fetchPolicy: "network-only",
@@ -57,7 +72,18 @@ const MovieList = ({ match }) => {
         <MoviesContainer>
           {data.getAllMovies.map((movie) => (
             <Card key={movie.id}>
-              <p>{movie.title}</p>
+              <CardContent>
+                <CardContentTitle>{movie.title}</CardContentTitle>
+                <CardContentLink
+                  as={routerLink}
+                  to={{
+                    pathname: `${match.url}/${movie.id}`,
+                    state: { movie: movie },
+                  }}
+                >
+                  View details
+                </CardContentLink>
+              </CardContent>
             </Card>
           ))}
         </MoviesContainer>

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Layout from "../../components/layout";
 import MovieList from "./movie-list";
 import MovieForm from "./movie-form";
+import MovieDetails from "./movie-details";
 import { useMutation } from "@apollo/client";
 import { CREATE_MOVIE } from "../../api/mutations";
 
@@ -12,6 +13,7 @@ const Dashboard = ({ match }) => {
     <Layout>
       <Switch>
         <Route exact path={match.url} component={MovieList} />
+        <Route path={`${match.path}/:movieId`} component={MovieDetails} />
         <Route path={`${match.path}/create-movie`} component={MovieForm} />
       </Switch>
     </Layout>

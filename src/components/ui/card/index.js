@@ -15,7 +15,6 @@ const Container = styled.div`
 
 const Body = styled.div`
   padding: 1rem;
-  width: fit-content;
 `;
 
 const Card = ({ children }) => (
