@@ -1,16 +1,16 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
 import Layout from "../../components/layout";
+import MovieList from "./movie-list";
 
 const Dashboard = ({ match }) => {
+  console.log("Route", match);
   return (
     <Layout>
-      <Route
-        exact
-        path={match.url}
-        render={() => <div>Please select a product.</div>}
-      />
+      <Switch>
+        <Route path={match.url} component={MovieList} />
+      </Switch>
     </Layout>
   );
 };

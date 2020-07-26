@@ -1,0 +1,16 @@
+:root {
+  /* Type Scale */
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-xxl: 2rem;
+  --text-xxxl: 2.5rem;
+
+  /* Font Weights */
+  --text-regular: 400;
+  --text-medium: 500;
+  --text-semibold: 600;
+  --text-bold: 700;
+}

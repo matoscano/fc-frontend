@@ -4,7 +4,6 @@ import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import NavBarLinks from "./NavBarLinks";
 import breakpoints from "../../../assets/styles/base/breakpoints";
 import FilmChainLogo from "../../ui/filmchain-logo";
-import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -91,7 +90,7 @@ const NavBarContainer = styled.div`
   }
 `;
 
-const GetroLogoContainer = styled.div`
+const GetroLogoContainer = styled.a`
   text-decoration: none;
   position: relative;
   top: 5px;
@@ -136,7 +135,7 @@ const Header = () => {
     <HeaderContainer open={navbarOpen}>
       <Container>
         <GetroLogoContainer
-          to="/"
+          href="/"
           alt="FilmChain logo"
           aria-label="FilmChain logo link"
         >
