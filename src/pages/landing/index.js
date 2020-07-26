@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Link from "../../components/ui/link";
+import { Link as routerLink } from "react-router-dom";
 import FilmChainVideo from "../../assets/videos/filmchain-hero.mp4";
-
 import FilmChainLogo from "../../components/ui/filmchain-logo";
 
 const Container = styled.section`
@@ -31,6 +32,13 @@ const LogoWrapper = styled.div`
   padding: 2rem;
 `;
 
+const CTAButton = styled(Link)`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 2rem auto;
+  text-transform: uppercase;
+`;
+
 const Footer = styled.p`
   position: absolute;
   bottom: 2rem;
@@ -51,7 +59,9 @@ const Landing = () => {
       <LogoWrapper>
         <FilmChainLogo />
       </LogoWrapper>
-
+      <CTAButton as={routerLink} to="/dashboard">
+        Go to dashboard
+      </CTAButton>
       <Footer>
         Made with{" "}
         <span role="img" aria-label="fire">
