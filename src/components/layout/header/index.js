@@ -90,7 +90,7 @@ const NavBarContainer = styled.div`
   }
 `;
 
-const GetroLogoContainer = styled.a`
+const FilmChainLogoContainer = styled.a`
   text-decoration: none;
   position: relative;
   top: 5px;
@@ -134,13 +134,13 @@ const Header = () => {
   return (
     <HeaderContainer open={navbarOpen}>
       <Container>
-        <GetroLogoContainer
+        <FilmChainLogoContainer
           href="/"
           alt="FilmChain logo"
           aria-label="FilmChain logo link"
         >
           <FilmChainLogo />
-        </GetroLogoContainer>
+        </FilmChainLogoContainer>
 
         <Toggle data-testid="toggle" onClick={() => setNavbarOpen(!navbarOpen)}>
           <Hamburger open={navbarOpen} />
