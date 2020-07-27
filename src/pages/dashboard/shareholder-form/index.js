@@ -63,10 +63,10 @@ const SendButton = styled(Button)`
 `;
 
 const ShareholderForm = ({ history }) => {
-  const { loading, error, data: movieData } = useQuery(GET_ALL_MOVIES, {
+  const { data: movieData } = useQuery(GET_ALL_MOVIES, {
     fetchPolicy: "network-only",
   });
-  const [createShareholder, response] = useMutation(CREATE_SHAREHOLDER);
+  const [createShareholder] = useMutation(CREATE_SHAREHOLDER);
   const { addToast } = useToasts();
 
   const handleCreateShareholder = async (values) => {

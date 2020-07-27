@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_SHAREHOLDERS } from "../../../api/queries";
 import Rectangle from "../../../components/ui/rectangle";
 import Card from "../../../components/ui/card";
-import Link from "../../../components/ui/link";
 import Loading from "../../../components/ui/loading";
 import { Link as routerLink } from "react-router-dom";
 

@@ -17,8 +17,8 @@ font-weight: var(--text-bold);
 }`;
 
 const LoadingSpinner = styled.div`
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid var(--color-gray-3);
+  border-top: 16px solid var(--color-brand-secondary);
   border-radius: 50%;
   width: 120px;
   height: 120px;

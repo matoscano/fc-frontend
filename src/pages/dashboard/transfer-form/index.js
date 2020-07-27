@@ -63,10 +63,10 @@ const SendButton = styled(Button)`
 `;
 
 const TransferForm = ({ history }) => {
-  const { loading, error, data: movieData } = useQuery(GET_ALL_MOVIES, {
+  const { data: movieData } = useQuery(GET_ALL_MOVIES, {
     fetchPolicy: "network-only",
   });
-  const [createTransfer, response] = useMutation(CREATE_TRANSFER);
+  const [createTransfer] = useMutation(CREATE_TRANSFER);
   const { addToast } = useToasts();
 
   const handleCreateTransfer = async (values) => {
