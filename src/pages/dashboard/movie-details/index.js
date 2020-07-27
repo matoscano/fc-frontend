@@ -8,6 +8,7 @@ import {
   GET_ALL_TRANSFER_BY_MOVIE,
   GET_ALL_SHAREHOLDERS_BY_MOVIE,
 } from "../../../api/queries";
+import Loading from "../../../components/ui/loading";
 
 const Container = styled.section`
   position: relative;
@@ -93,6 +94,8 @@ const MovieDetails = ({ history, match, location }) => {
     }
     return { transfers: null, totalAmount: null, shareholders: null };
   }, [transferData, shareholderData]);
+
+  if (transferLoading || shareholderLoading) return <Loading />;
 
   return (
     <Container>

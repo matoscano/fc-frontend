@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
 import { withRouter } from "react-router-dom";
 import Rectangle from "../../../components/ui/rectangle";
+import Loading from "../../../components/ui/loading";
 import { useQuery } from "@apollo/client";
 import { GET_SHAREHOLDER_BY_ID } from "../../../api/queries";
 
@@ -46,13 +47,10 @@ const DetailsList = styled.ul`
 `;
 
 const ShareholderDetails = ({ history, match }) => {
-  const { loading: transferLoading, error: transferError, data } = useQuery(
-    GET_SHAREHOLDER_BY_ID,
-    {
-      fetchPolicy: "network-only",
-      variables: { shareholderId: match.params.shareholderId },
-    }
-  );
+  const { loading, error, data } = useQuery(GET_SHAREHOLDER_BY_ID, {
+    fetchPolicy: "network-only",
+    variables: { shareholderId: match.params.shareholderId },
+  });
 
   const { balance, totalBalance, shareholder } = useMemo(() => {
     if (data) {
@@ -86,6 +84,8 @@ const ShareholderDetails = ({ history, match }) => {
 
     return { balance: [], totalBalance: 0, shareholder: emptyShareholder };
   }, [data]);
+
+  if (loading) return <Loading />;
 
   return (
     <Container>

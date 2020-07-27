@@ -5,6 +5,7 @@ import { GET_ALL_MOVIES } from "../../../api/queries";
 import Rectangle from "../../../components/ui/rectangle";
 import Card from "../../../components/ui/card";
 import Link from "../../../components/ui/link";
+import Loading from "../../../components/ui/loading";
 import { Link as routerLink } from "react-router-dom";
 
 const Container = styled.section`
@@ -63,7 +64,7 @@ const MovieList = ({ match }) => {
     fetchPolicy: "network-only",
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error :(</p>;
 
   return (
