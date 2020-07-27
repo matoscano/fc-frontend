@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_MOVIES } from "../../../api/queries";
+import { GET_ALL_SHAREHOLDERS } from "../../../api/queries";
 import Rectangle from "../../../components/ui/rectangle";
 import Card from "../../../components/ui/card";
 import Link from "../../../components/ui/link";
@@ -29,20 +29,6 @@ const additionalStyle = css`
   margin: 0 auto;
 `;
 
-const ButtonsContainer = styled.div`
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  flex-direction: row;
-`;
-
-const NewResourceBtn = styled(Link)`
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 1rem;
-  width: 100%;
-`;
-
 const CardContent = styled.div``;
 
 const CardContentTitle = styled.div`
@@ -58,8 +44,8 @@ const CardContentLink = styled.a`
   text-align: end;
 `;
 
-const MovieList = ({ match }) => {
-  const { loading, error, data } = useQuery(GET_ALL_MOVIES, {
+const ShareholderList = ({ match }) => {
+  const { loading, error, data } = useQuery(GET_ALL_SHAREHOLDERS, {
     fetchPolicy: "network-only",
   });
 
@@ -69,36 +55,23 @@ const MovieList = ({ match }) => {
   return (
     <Container>
       <Title>
-        Dashboard{" "}
+        Shareholders{" "}
         <span role="img" aria-label="movie">
-          &#128736;
+          &#128176;
         </span>
       </Title>
       <Rectangle additionalStyle={additionalStyle}>
-        <ButtonsContainer>
-          <NewResourceBtn as={routerLink} to={`${match.url}/create-movie`}>
-            New movie
-          </NewResourceBtn>
-          <NewResourceBtn
-            as={routerLink}
-            to={`${match.url}/create-shareholder`}
-          >
-            New shareholder
-          </NewResourceBtn>
-          <NewResourceBtn as={routerLink} to={`${match.url}/create-transfer`}>
-            New transfer
-          </NewResourceBtn>
-        </ButtonsContainer>
         <MoviesContainer>
-          {data.getAllMovies.map((movie) => (
-            <Card key={movie.id}>
+          {data.getAllShareholders.map((shareholder) => (
+            <Card key={shareholder.id}>
               <CardContent>
-                <CardContentTitle>{movie.title}</CardContentTitle>
+                <CardContentTitle>
+                  {shareholder.firstName} {shareholder.lastName}
+                </CardContentTitle>
                 <CardContentLink
                   as={routerLink}
                   to={{
-                    pathname: `${match.url}/${movie.id}`,
-                    state: { movie: movie },
+                    pathname: `${match.url}/${shareholder.id}`,
                   }}
                 >
                   View details
@@ -112,4 +85,4 @@ const MovieList = ({ match }) => {
   );
 };
 
-export default MovieList;
+export default ShareholderList;

@@ -9,7 +9,7 @@ const Routes = () => {
     <Switch>
       <Route path="/" component={Landing} exact />
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/wallet/:id" component={Wallet} />
+      <Route path="/wallet" component={Wallet} />
       <Route component={() => <h1>Oops! Page not found!</h1>} />
     </Switch>
   );

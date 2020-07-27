@@ -69,7 +69,7 @@ const NavBarLink = styled.a`
 const NavBarLinks = ({ open }) => {
   return (
     <NavBarLinksContainer>
-      <NavBarLink as={Link} to="/wallet/sdaf">
+      <NavBarLink as={Link} to="/wallet">
         Wallet
       </NavBarLink>
     </NavBarLinksContainer>
