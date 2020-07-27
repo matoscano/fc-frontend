@@ -71,7 +71,7 @@ const MovieList = ({ match }) => {
         </ButtonsContainer>
         <GridContainer>
           {data.getAllMovies.map((movie) => (
-            <Card key={movie.id}>
+            <Card key={movie.id} imgUrl={movie.cover}>
               <>
                 <CardContentTitle>{movie.title}</CardContentTitle>
                 <CardContentLink

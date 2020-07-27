@@ -45,7 +45,7 @@ const TransferForm = ({ history }) => {
       },
     });
     addToast("Saved Successfully", { appearance: "success" });
-    history.goBack();
+    setTimeout(() => history.goBack(), 1000);
   };
 
   const { moviesOptions } = useMemo(() => {

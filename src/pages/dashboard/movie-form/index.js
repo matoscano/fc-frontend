@@ -32,9 +32,10 @@ const MovieForm = ({ history }) => {
   const { addToast } = useToasts();
 
   const handleCreateMovie = async (values) => {
-    createMovie({ variables: { title: values.title } });
+    createMovie({ variables: { title: values.title, cover: values.cover } });
     addToast("Saved Successfully", { appearance: "success" });
-    history.push("/dashboard");
+
+    setTimeout(() => history.push("/dashboard"), 1000);
   };
 
   return (
@@ -46,6 +47,7 @@ const MovieForm = ({ history }) => {
         <Formik
           initialValues={{
             title: "",
+            cover: "",
           }}
           onSubmit={(values, actions) => {
             handleCreateMovie(values);
@@ -56,6 +58,9 @@ const MovieForm = ({ history }) => {
             const errors = {};
             if (!values.title) {
               errors.title = requiredMsg;
+            }
+            if (!values.cover) {
+              errors.cover = requiredMsg;
             }
             return errors;
           }}
@@ -68,6 +73,16 @@ const MovieForm = ({ history }) => {
                 </Label>
                 <Field name="title" />
                 <ErrorMessage name="title">
+                  {(msg) => <Error>{msg}</Error>}
+                </ErrorMessage>
+              </FieldContainer>
+
+              <FieldContainer>
+                <Label as="label" htmlFor="cover">
+                  Cover image (url)
+                </Label>
+                <Field name="cover" />
+                <ErrorMessage name="cover">
                   {(msg) => <Error>{msg}</Error>}
                 </ErrorMessage>
               </FieldContainer>

@@ -5,6 +5,7 @@ const GET_ALL_MOVIES = gql`
     getAllMovies {
       id
       title
+      cover
       createAt
     }
   }

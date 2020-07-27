@@ -17,10 +17,10 @@ const Body = styled.div`
   padding: 1rem;
 `;
 
-const Card = ({ children }) => (
+const Card = ({ children, imgUrl }) => (
   <Container>
     <img
-      src="https://via.placeholder.com/150"
+      src={imgUrl ? imgUrl : "https://via.placeholder.com/150"}
       alt="img movie"
       title="Image movie"
     />
@@ -30,6 +30,7 @@ const Card = ({ children }) => (
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
+  imgUrl: PropTypes.string.isRequired,
 };
 
 export default Card;
