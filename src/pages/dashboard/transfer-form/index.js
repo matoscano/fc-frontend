@@ -7,7 +7,7 @@ import Button from "../../../components/ui/button";
 import Rectangle from "../../../components/ui/rectangle";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_ALL_MOVIES } from "../../../api/queries";
-import { CREATE_SHAREHOLDER } from "../../../api/mutations";
+import { CREATE_TRANSFER } from "../../../api/mutations";
 import SelectField from "../../../components/ui/select";
 
 const Container = styled.section`
@@ -62,20 +62,18 @@ const SendButton = styled(Button)`
   margin: 1rem auto;
 `;
 
-const ShareholderForm = ({ history }) => {
+const TransferForm = ({ history }) => {
   const { loading, error, data: movieData } = useQuery(GET_ALL_MOVIES, {
     fetchPolicy: "network-only",
   });
-  const [createShareholder, response] = useMutation(CREATE_SHAREHOLDER);
+  const [createTransfer, response] = useMutation(CREATE_TRANSFER);
   const { addToast } = useToasts();
 
-  const handleCreateShareholder = async (values) => {
-    createShareholder({
+  const handleCreateTransfer = async (values) => {
+    createTransfer({
       variables: {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        address: values.address,
-        iban: values.iban,
+        amount: values.amount,
+        description: values.description,
         movieId: values.movieId,
       },
     });
@@ -110,26 +108,29 @@ const ShareholderForm = ({ history }) => {
       <Rectangle additionalStyle={additionalStyle}>
         <Formik
           initialValues={{
-            firstName: "",
-            lastName: "",
-            address: "",
-            iban: "",
+            amount: 0,
+            description: "",
             movieId: "",
           }}
           onSubmit={(values, actions) => {
-            handleCreateShareholder(values);
+            handleCreateTransfer(values);
             actions.setSubmitting(false);
           }}
           validate={(values) => {
-            const IBANRegex = /^(?:(?:IT|SM)\d{2}[A-Z]\d{22}|CY\d{2}[A-Z]\d{23}|NL\d{2}[A-Z]{4}\d{10}|LV\d{2}[A-Z]{4}\d{13}|(?:BG|BH|GB|IE)\d{2}[A-Z]{4}\d{14}|GI\d{2}[A-Z]{4}\d{15}|RO\d{2}[A-Z]{4}\d{16}|KW\d{2}[A-Z]{4}\d{22}|MT\d{2}[A-Z]{4}\d{23}|NO\d{13}|(?:DK|FI|GL|FO)\d{16}|MK\d{17}|(?:AT|EE|KZ|LU|XK)\d{18}|(?:BA|HR|LI|CH|CR)\d{19}|(?:GE|DE|LT|ME|RS)\d{20}|IL\d{21}|(?:AD|CZ|ES|MD|SA)\d{22}|PT\d{23}|(?:BE|IS)\d{24}|(?:FR|MR|MC)\d{25}|(?:AL|DO|LB|PL)\d{26}|(?:AZ|HU)\d{27}|(?:GR|MU)\d{28})$/i;
             const requiredMsg = "This field is required";
+            const graterThanZero = "The amount should be greater than 0";
+            const shouldBeANumber = "The amount should be a number";
             const errors = {};
-            if (!values.firstName) {
-              errors.firstName = requiredMsg;
+            if (!values.amount) {
+              errors.amount = requiredMsg;
             }
 
-            if (!IBANRegex.test(values.iban)) {
-              errors.iban = "Invalid iban";
+            if (typeof values.amount !== "number") {
+              errors.amount = shouldBeANumber;
+            }
+
+            if (values.amount < 1) {
+              errors.amount = graterThanZero;
             }
 
             if (!values.movieId) {
@@ -142,41 +143,21 @@ const ShareholderForm = ({ history }) => {
           {() => (
             <Form>
               <FieldContainer>
-                <Label as="label" htmlFor="firstName">
-                  First name
+                <Label as="label" htmlFor="amount">
+                  Amount
                 </Label>
-                <Field name="firstName" />
-                <ErrorMessage name="firstName">
+                <Field name="amount" type="number" />
+                <ErrorMessage name="amount">
                   {(msg) => <Error>{msg}</Error>}
                 </ErrorMessage>
               </FieldContainer>
 
               <FieldContainer>
-                <Label as="label" htmlFor="lastName">
-                  Last name
+                <Label as="label" htmlFor="description">
+                  Description
                 </Label>
-                <Field name="lastName" />
-                <ErrorMessage name="lastName">
-                  {(msg) => <Error>{msg}</Error>}
-                </ErrorMessage>
-              </FieldContainer>
-
-              <FieldContainer>
-                <Label as="label" htmlFor="address">
-                  Address
-                </Label>
-                <Field name="address" />
-                <ErrorMessage name="address">
-                  {(msg) => <Error>{msg}</Error>}
-                </ErrorMessage>
-              </FieldContainer>
-
-              <FieldContainer>
-                <Label as="label" htmlFor="iban">
-                  IBAN
-                </Label>
-                <Field name="iban" />
-                <ErrorMessage name="iban">
+                <Field name="description" component="textarea" rows="3" />
+                <ErrorMessage name="description">
                   {(msg) => <Error>{msg}</Error>}
                 </ErrorMessage>
               </FieldContainer>
@@ -204,4 +185,4 @@ const ShareholderForm = ({ history }) => {
   );
 };
 
-export default withRouter(ShareholderForm);
+export default withRouter(TransferForm);

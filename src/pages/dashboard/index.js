@@ -5,6 +5,7 @@ import MovieList from "./movie-list";
 import MovieForm from "./movie-form";
 import MovieDetails from "./movie-details";
 import ShareholderForm from "./shareholder-form";
+import TransferForm from "./transfer-form";
 
 const Dashboard = ({ match }) => {
   return (
@@ -20,6 +21,11 @@ const Dashboard = ({ match }) => {
           exact
           path={`${match.path}/create-shareholder`}
           component={ShareholderForm}
+        />
+        <Route
+          exact
+          path={`${match.path}/create-transfer`}
+          component={TransferForm}
         />
         <Route
           exact

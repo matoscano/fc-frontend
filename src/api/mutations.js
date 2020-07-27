@@ -31,4 +31,21 @@ const CREATE_SHAREHOLDER = gql`
   }
 `;
 
-export { CREATE_MOVIE, CREATE_SHAREHOLDER };
+const CREATE_TRANSFER = gql`
+  mutation createTransfer(
+    $amount: Float!
+    $description: String
+    $movieId: ID!
+  ) {
+    createTransfer(
+      amount: $amount
+      description: $description
+      movieId: $movieId
+    ) {
+      id
+      createAt
+    }
+  }
+`;
+
+export { CREATE_MOVIE, CREATE_SHAREHOLDER, CREATE_TRANSFER };
