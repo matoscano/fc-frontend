@@ -34,6 +34,10 @@ const ViewDetailsLink = styled.a`
   text-decoration: none;
 `;
 
+const EmptyListWrapper = styled.div`
+  height: 100%;
+`;
+
 const NewButton = styled(Button)`
   align-self: center;
   margin: 1.5rem auto;
@@ -115,12 +119,12 @@ const MovieDetails = ({ history, match, location }) => {
               </DetailsList>
             </>
           ) : (
-            <div>
+            <EmptyListWrapper>
               There are no transfers.{" "}
               <span role="img" aria-label="movie">
                 &#129335;
               </span>
-            </div>
+            </EmptyListWrapper>
           )}
           <NewButton onClick={() => history.push("/dashboard/create-transfer")}>
             Create Transfer
@@ -155,12 +159,12 @@ const MovieDetails = ({ history, match, location }) => {
               </DetailsList>
             </>
           ) : (
-            <div>
+            <EmptyListWrapper>
               There are no shareholders.{" "}
               <span role="img" aria-label="movie">
                 &#129300;
               </span>
-            </div>
+            </EmptyListWrapper>
           )}
           <NewButton
             onClick={() => history.push("/dashboard/create-shareholder")}
