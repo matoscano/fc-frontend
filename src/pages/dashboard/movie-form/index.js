@@ -7,53 +7,20 @@ import Button from "../../../components/ui/button";
 import Rectangle from "../../../components/ui/rectangle";
 import { useMutation } from "@apollo/client";
 import { CREATE_MOVIE } from "../../../api/mutations";
+import {
+  PageTitle,
+  FieldContainer,
+  Label,
+  Error,
+} from "../../../styled-components";
 
 const Container = styled.section`
   position: relative;
 `;
 
-const Title = styled.h1`
-  font-size: var(--text-xxxl);
-  text-align: center;
-  padding: 1rem;
-  margin: 2rem auto;
-`;
-
 const additionalStyle = css`
   max-width: 60rem;
   margin: 0 auto;
-`;
-
-const FieldContainer = styled.div`
-  margin: 1.5rem auto;
-  label {
-    display: block;
-  }
-
-  input,
-  textarea {
-    display: block;
-    width: 100%;
-    border: none;
-    background-color: rgba(var(--color-gray-6-rgba), 0.4);
-    border-radius: 0.188rem;
-    min-height: 3rem;
-    padding: 0.5rem;
-  }
-
-  textarea {
-    min-height: 6rem;
-  }
-`;
-
-const Label = styled.label`
-  margin-bottom: 0.25rem;
-  color: var(--color-gray-2);
-`;
-
-const Error = styled.div`
-  color: var(--color-support-error);
-  margin-top: 0.5rem;
 `;
 
 const SendButton = styled(Button)`
@@ -73,7 +40,7 @@ const MovieForm = ({ history }) => {
   return (
     <Container>
       {" "}
-      <Title>New movie</Title>
+      <PageTitle>New movie</PageTitle>
       <Rectangle additionalStyle={additionalStyle}>
         {" "}
         <Formik

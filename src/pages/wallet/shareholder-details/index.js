@@ -1,53 +1,32 @@
 import React, { useMemo } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Rectangle from "../../../components/ui/rectangle";
 import Loading from "../../../components/ui/loading";
 import { useQuery } from "@apollo/client";
 import { GET_SHAREHOLDER_BY_ID } from "../../../api/queries";
+import {
+  PageTitle,
+  rectangleAdditionalStyle,
+  RectangleTitle,
+  TotalAmount,
+  DetailsContainer,
+  DetailsList,
+  DetailsListWithoutDecoration,
+  ListItemMain,
+  ListItemSecondary,
+  ListItemWithIcon,
+} from "../../../styled-components";
 
 const Container = styled.section`
   position: relative;
 `;
 
-const Title = styled.h1`
-  font-size: var(--text-xxxl);
-  text-align: center;
-  padding: 1rem;
-  margin: 2rem auto;
+const DetailsListWithLessMargin = styled(DetailsList)`
+  margin-left: 1rem;
 `;
-
-const additionalStyle = css`
-  max-width: 40rem;
-  margin: 1.5rem auto;
-  display: flex;
-  flex-direction: column;
-`;
-
-const RectangleTitle = styled.h2`
-  font-size: var(--text-xxl);
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-`;
-
-const TotalAmount = styled.div`
-  font-size: var(--text-xxl);
-  text-align: center;
-  margin-bottom: 1rem;
-`;
-
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const DetailsList = styled.ul`
-  height: 100%;
-`;
-
-const ShareholderDetails = ({ history, match }) => {
+const ShareholderDetails = ({ match }) => {
   const { loading, error, data } = useQuery(GET_SHAREHOLDER_BY_ID, {
     fetchPolicy: "network-only",
     variables: { shareholderId: match.params.shareholderId },
@@ -90,11 +69,11 @@ const ShareholderDetails = ({ history, match }) => {
 
   return (
     <Container>
-      <Title>
+      <PageTitle>
         {shareholder.firstName} {shareholder.lastName}
-      </Title>
+      </PageTitle>
       <DetailsContainer>
-        <Rectangle additionalStyle={additionalStyle}>
+        <Rectangle additionalStyle={rectangleAdditionalStyle}>
           <RectangleTitle>
             Balance{" "}
             <span role="img" aria-label="movie">
@@ -103,57 +82,78 @@ const ShareholderDetails = ({ history, match }) => {
           </RectangleTitle>
           {balance && balance.length > 0 ? (
             <>
-              <TotalAmount>Balance amount total: {totalBalance}€</TotalAmount>
+              <TotalAmount>
+                Balance amount total: <strong>{totalBalance}€</strong>
+              </TotalAmount>
               <DetailsList>
                 {balance.map((balanceTransaction) => {
                   return (
-                    <li key={balanceTransaction.id}>
+                    <ListItemMain key={balanceTransaction.id}>
                       Income: {balanceTransaction.amount}€
-                      <ul>
-                        <li>
+                      <DetailsListWithLessMargin>
+                        <ListItemSecondary>
                           Transfer: {balanceTransaction.Transfer.id} -{" "}
                           {balanceTransaction.Transfer.amount}€ ({" "}
                           {moment(balanceTransaction.Transfer.createAt).format(
                             "MMM Do YY"
                           )}
                           )
-                        </li>
-                      </ul>
-                    </li>
+                        </ListItemSecondary>
+                      </DetailsListWithLessMargin>
+                    </ListItemMain>
                   );
                 })}
               </DetailsList>
             </>
           ) : (
             <div>
-              There are no transfers.{" "}
+              There are no balance records.{" "}
               <span role="img" aria-label="movie">
                 &#129335;
               </span>
             </div>
           )}
         </Rectangle>
-        <Rectangle additionalStyle={additionalStyle}>
+        <Rectangle additionalStyle={rectangleAdditionalStyle}>
           <RectangleTitle>
-            Shareholder info{" "}
+            Shareholder{" "}
             <span role="img" aria-label="movie">
               &#128176;
             </span>
           </RectangleTitle>
           {shareholder ? (
             <>
-              <DetailsList>
-                <li>
+              <DetailsListWithoutDecoration>
+                <ListItemWithIcon>
+                  <span role="img" aria-label="movie">
+                    &#128100;
+                  </span>{" "}
                   {shareholder.firstName} {shareholder.lastName}
-                </li>
-                <li>{shareholder.address}</li>
-                <li>{shareholder.iban}</li>
-                <li>{shareholder.Movie.title}</li>
-              </DetailsList>
+                </ListItemWithIcon>
+                <ListItemWithIcon>
+                  <span role="img" aria-label="movie">
+                    &#128205;
+                  </span>{" "}
+                  {shareholder.address}
+                </ListItemWithIcon>
+                <ListItemWithIcon>
+                  {" "}
+                  <span role="img" aria-label="movie">
+                    &#127974;
+                  </span>{" "}
+                  {shareholder.iban}
+                </ListItemWithIcon>
+                <ListItemWithIcon>
+                  <span role="img" aria-label="movie">
+                    &#127902;
+                  </span>{" "}
+                  {shareholder.Movie.title}
+                </ListItemWithIcon>
+              </DetailsListWithoutDecoration>
             </>
           ) : (
             <div>
-              There are no shareholders.{" "}
+              There is no shareholder.{" "}
               <span role="img" aria-label="movie">
                 &#129300;
               </span>

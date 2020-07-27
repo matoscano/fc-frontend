@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import Button from "../../../components/ui/button";
 import Rectangle from "../../../components/ui/rectangle";
@@ -9,50 +9,23 @@ import {
   GET_ALL_SHAREHOLDERS_BY_MOVIE,
 } from "../../../api/queries";
 import Loading from "../../../components/ui/loading";
+import {
+  PageTitle,
+  rectangleAdditionalStyle,
+  RectangleTitle,
+  TotalAmount,
+  DetailsContainer,
+  DetailsList,
+  ListItemMain,
+} from "../../../styled-components";
 
 const Container = styled.section`
   position: relative;
 `;
 
-const Title = styled.h1`
-  font-size: var(--text-xxxl);
-  text-align: center;
-  padding: 1rem;
-  margin: 2rem auto;
-`;
-
-const additionalStyle = css`
-  max-width: 40rem;
-  margin: 1.5rem auto;
-  display: flex;
-  flex-direction: column;
-`;
-
-const RectangleTitle = styled.h2`
-  font-size: var(--text-xxl);
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-`;
-
-const TotalAmount = styled.div`
-  font-size: var(--text-xxl);
-  text-align: center;
-  margin-bottom: 1rem;
-`;
-
-const DetailsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const NewButton = styled(Button)`
   align-self: center;
   margin: 1.5rem auto;
-`;
-
-const DetailsList = styled.ul`
-  height: 100%;
 `;
 
 const MovieDetails = ({ history, match, location }) => {
@@ -99,9 +72,9 @@ const MovieDetails = ({ history, match, location }) => {
 
   return (
     <Container>
-      <Title>{location.state.movie.title}</Title>
+      <PageTitle>{location.state.movie.title}</PageTitle>
       <DetailsContainer>
-        <Rectangle additionalStyle={additionalStyle}>
+        <Rectangle additionalStyle={rectangleAdditionalStyle}>
           <RectangleTitle>
             Transfers{" "}
             <span role="img" aria-label="movie">
@@ -110,13 +83,15 @@ const MovieDetails = ({ history, match, location }) => {
           </RectangleTitle>
           {transfers && transfers.length > 0 ? (
             <>
-              <TotalAmount>Transfer amount total: {totalAmount}€</TotalAmount>
+              <TotalAmount>
+                Transfer amount total: <strong>{totalAmount}€</strong>
+              </TotalAmount>
               <DetailsList>
                 {transfers.map((transfer) => {
                   return (
-                    <li key={transfer.id}>
+                    <ListItemMain key={transfer.id}>
                       {transfer.amount}€ {transfer.description}
-                    </li>
+                    </ListItemMain>
                   );
                 })}
               </DetailsList>
@@ -133,7 +108,7 @@ const MovieDetails = ({ history, match, location }) => {
             Create Transfer
           </NewButton>
         </Rectangle>
-        <Rectangle additionalStyle={additionalStyle}>
+        <Rectangle additionalStyle={rectangleAdditionalStyle}>
           <RectangleTitle>
             Shareholders{" "}
             <span role="img" aria-label="movie">
@@ -145,9 +120,9 @@ const MovieDetails = ({ history, match, location }) => {
               <DetailsList>
                 {shareholders.map((shareholder) => {
                   return (
-                    <li key={shareholder.id}>
+                    <ListItemMain key={shareholder.id}>
                       {shareholder.firstName} {shareholder.lastName}
-                    </li>
+                    </ListItemMain>
                   );
                 })}
               </DetailsList>

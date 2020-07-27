@@ -7,6 +7,7 @@ const Main = styled.main`
   padding-top: var(--header-height);
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 4rem;
 
   @media (max-width: ${breakpoints.breakpointLg}) {
     padding-top: var(--header-height-mobile);
