@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Loading 1`] = `
+<div>
+  <section
+    class="sc-AxjAm jhiTqR"
+  >
+    <div
+      class="sc-AxirZ febGTa"
+    >
+      <div
+        class="sc-AxhCb cPsxtN"
+      />
+      <div
+        class="sc-AxiKw kdkRpp"
+      >
+        Loading...
+      </div>
+    </div>
+  </section>
+</div>
+`;

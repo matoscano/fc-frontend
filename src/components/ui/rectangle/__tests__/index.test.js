@@ -1,11 +1,8 @@
-import React from "react"
-import renderer from "react-test-renderer"
+import React from "react";
+import { render } from "@testing-library/react";
+import Rectangle from "../index";
 
-import Rectangle from "../index"
-
-describe("Rectangle", () => {
-  it("renders correctly", () => {
-    const tree = renderer.create(<Rectangle>Test rectangle</Rectangle>).toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-})
+it("renders a Rectangle", () => {
+  const { container } = render(<Rectangle>Rectangle content</Rectangle>);
+  expect(container).toMatchSnapshot();
+});

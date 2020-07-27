@@ -10,8 +10,8 @@ export default {
   component: Button,
 };
 
-export const LinkDefault = () => (
+export const ButtonDefault = () => (
   <Wrapper>
-    <Button> This is a link</Button>
+    <Button> This is a button</Button>
   </Wrapper>
 );

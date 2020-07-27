@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   background-color: black;
 `;
 export default {
-  title: "FilmChainLogo",
+  title: "UI/FilmChainLogo",
   component: FilmChainLogo,
 };
 

@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link renders correctly 1`] = `
+exports[`Button renders correctly 1`] = `
 <DocumentFragment>
-  <a
-    class="sc-AxjAm fYPnEX"
-    href="/"
+  <button
+    class="sc-AxjAm dpQVlV"
   />
 </DocumentFragment>
 `;

@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rectangle renders correctly 1`] = `
-<div
-  className="sc-AxjAm juGzpz"
->
-  Test rectangle
+exports[`renders a Rectangle 1`] = `
+<div>
+  <div
+    class="sc-AxjAm juRXTL"
+  >
+    Rectangle content
+  </div>
 </div>
 `;

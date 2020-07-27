@@ -8,7 +8,6 @@ exports[`renders a FilmChainLogo 1`] = `
   >
     <g
       fill="none"
-      fill-rule="evenodd"
       transform="translate(-100.000000, -65.000000) translate(100.000000, 60.000000) translate(0.000000, 5.000000)"
     >
       <path

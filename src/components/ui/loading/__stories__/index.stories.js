@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "../index";
+import Loading from "../index";
 
 const Wrapper = styled.div`
   padding: 2rem;
 `;
 export default {
-  title: "UI/Link",
-  component: Link,
+  title: "UI/Loading",
+  component: Loading,
 };
 
-export const LinkDefault = () => (
+export const LoadingDefault = () => (
   <Wrapper>
-    <Link> This is a link</Link>
+    <Loading />
   </Wrapper>
 );
