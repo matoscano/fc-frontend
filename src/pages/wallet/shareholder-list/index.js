@@ -41,23 +41,32 @@ const ShareholderList = ({ match }) => {
       </PageTitle>
       <Rectangle additionalStyle={additionalStyle}>
         <GridContainer>
-          {data.getAllShareholders.map((shareholder) => (
-            <Card key={shareholder.id}>
-              <>
-                <CardContentTitle>
-                  {shareholder.firstName} {shareholder.lastName}
-                </CardContentTitle>
-                <CardContentLink
-                  as={routerLink}
-                  to={{
-                    pathname: `${match.url}/${shareholder.id}`,
-                  }}
-                >
-                  View details
-                </CardContentLink>
-              </>
-            </Card>
-          ))}
+          {data.getAllShareholders && data.getAllShareholders.lenght > 0 ? (
+            data.getAllShareholders.map((shareholder) => (
+              <Card key={shareholder.id}>
+                <>
+                  <CardContentTitle>
+                    {shareholder.firstName} {shareholder.lastName}
+                  </CardContentTitle>
+                  <CardContentLink
+                    as={routerLink}
+                    to={{
+                      pathname: `${match.url}/${shareholder.id}`,
+                    }}
+                  >
+                    View details
+                  </CardContentLink>
+                </>
+              </Card>
+            ))
+          ) : (
+            <div>
+              There are no shareholders.{" "}
+              <span role="img" aria-label="movie">
+                &#129335;
+              </span>
+            </div>
+          )}
         </GridContainer>
       </Rectangle>
     </Container>

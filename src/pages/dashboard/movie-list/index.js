@@ -70,22 +70,31 @@ const MovieList = ({ match }) => {
           </NewResourceBtn>
         </ButtonsContainer>
         <GridContainer>
-          {data.getAllMovies.map((movie) => (
-            <Card key={movie.id} imgUrl={movie.cover}>
-              <>
-                <CardContentTitle>{movie.title}</CardContentTitle>
-                <CardContentLink
-                  as={routerLink}
-                  to={{
-                    pathname: `${match.url}/${movie.id}`,
-                    state: { movie: movie },
-                  }}
-                >
-                  View details
-                </CardContentLink>
-              </>
-            </Card>
-          ))}
+          {data.getAllMovies && data.getAllMovies.lenght > 0 ? (
+            data.getAllMovies.map((movie) => (
+              <Card key={movie.id} imgUrl={movie.cover}>
+                <>
+                  <CardContentTitle>{movie.title}</CardContentTitle>
+                  <CardContentLink
+                    as={routerLink}
+                    to={{
+                      pathname: `${match.url}/${movie.id}`,
+                      state: { movie: movie },
+                    }}
+                  >
+                    View details
+                  </CardContentLink>
+                </>
+              </Card>
+            ))
+          ) : (
+            <div>
+              There are no movies.{" "}
+              <span role="img" aria-label="movie">
+                &#129335;
+              </span>
+            </div>
+          )}
         </GridContainer>
       </Rectangle>
     </Container>
