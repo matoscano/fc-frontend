@@ -6,11 +6,11 @@ const Container = styled.div`
   border: 1px solid var(--color-brand-primary);
   border-radius: 1rem;
   overflow: hidden;
-  width: fit-content;
+`;
 
+const ImageWrapper = styled.div`
   img {
     width: 100%;
-    max-width: 15rem;
     height: auto;
   }
 `;
@@ -21,11 +21,14 @@ const Body = styled.div`
 
 const Card = ({ children, imgUrl }) => (
   <Container>
-    <img
-      src={imgUrl ? imgUrl : "https://via.placeholder.com/150"}
-      alt="img movie"
-      title="Image movie"
-    />
+    <ImageWrapper>
+      <img
+        src={imgUrl ? imgUrl : "https://via.placeholder.com/150"}
+        alt="img movie"
+        title="Image movie"
+      />
+    </ImageWrapper>
+
     <Body>{children}</Body>
   </Container>
 );

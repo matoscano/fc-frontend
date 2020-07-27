@@ -7,6 +7,7 @@ import Card from "../../../components/ui/card";
 import Link from "../../../components/ui/link";
 import Loading from "../../../components/ui/loading";
 import Error from "../../../components/ui/error";
+import breakpoints from "../../../assets/styles/base/breakpoints";
 import { Link as routerLink } from "react-router-dom";
 import {
   PageTitle,
@@ -25,17 +26,20 @@ const additionalStyle = css`
 `;
 
 const ButtonsContainer = styled.div`
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  flex-direction: row;
+  @media (min-width: ${breakpoints.breakpointMd}) {
+    display: flex;
+  }
 `;
 
 const NewResourceBtn = styled(Link)`
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 1rem;
+  margin: 1rem auto;
   width: 100%;
+
+  @media (min-width: ${breakpoints.breakpointMd}) {
+    margin: 1rem;
+  }
 `;
 
 const MovieList = ({ match }) => {
