@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
 import moment from "moment";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import Button from "../../../components/ui/button";
 import Rectangle from "../../../components/ui/rectangle";
 import { useQuery } from "@apollo/client";
@@ -28,6 +28,10 @@ const Container = styled.section`
 
 const DetailsListWithLessMargin = styled(DetailsList)`
   margin-left: 1rem;
+`;
+
+const ViewDetailsLink = styled.a`
+  text-decoration: none;
 `;
 
 const NewButton = styled(Button)`
@@ -135,7 +139,16 @@ const MovieDetails = ({ history, match, location }) => {
                 {shareholders.map((shareholder) => {
                   return (
                     <ListItemMain key={shareholder.id}>
-                      {shareholder.firstName} {shareholder.lastName}
+                      <ViewDetailsLink
+                        to={{
+                          pathname: `/wallet/${shareholder.id}`,
+                        }}
+                        as={Link}
+                        alt="View details"
+                        title="View details"
+                      >
+                        {shareholder.firstName} {shareholder.lastName}
+                      </ViewDetailsLink>
                     </ListItemMain>
                   );
                 })}

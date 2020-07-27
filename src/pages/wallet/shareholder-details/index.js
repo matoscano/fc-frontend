@@ -4,6 +4,7 @@ import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Rectangle from "../../../components/ui/rectangle";
 import Loading from "../../../components/ui/loading";
+import Card from "../../../components/ui/card";
 import Error from "../../../components/ui/error";
 import { useQuery } from "@apollo/client";
 import { GET_SHAREHOLDER_BY_ID } from "../../../api/queries";
@@ -18,6 +19,7 @@ import {
   ListItemMain,
   ListItemSecondary,
   ListItemWithIcon,
+  CardContentTitle,
 } from "../../../styled-components";
 
 const Container = styled.section`
@@ -27,6 +29,12 @@ const Container = styled.section`
 const DetailsListWithLessMargin = styled(DetailsList)`
   margin-left: 1rem;
 `;
+
+const MovieCoverWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const ShareholderDetails = ({ match }) => {
   const { loading, error, data } = useQuery(GET_SHAREHOLDER_BY_ID, {
     fetchPolicy: "network-only",
@@ -152,6 +160,15 @@ const ShareholderDetails = ({ match }) => {
                   {shareholder.Movie.title}
                 </ListItemWithIcon>
               </DetailsListWithoutDecoration>
+              <MovieCoverWrapper>
+                <Card key={shareholder.id} imgUrl={shareholder.Movie.cover}>
+                  <>
+                    <CardContentTitle>
+                      {shareholder.Movie.title}
+                    </CardContentTitle>
+                  </>
+                </Card>
+              </MovieCoverWrapper>
             </>
           ) : (
             <div>

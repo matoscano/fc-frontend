@@ -32,6 +32,7 @@ const GET_SHAREHOLDER_BY_ID = gql`
       Movie {
         id
         title
+        cover
       }
       BalanceTransaction {
         id

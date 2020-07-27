@@ -6,9 +6,11 @@ const Container = styled.div`
   border: 1px solid var(--color-brand-primary);
   border-radius: 1rem;
   overflow: hidden;
+  width: fit-content;
 
   img {
     width: 100%;
+    max-width: 15rem;
     height: auto;
   }
 `;

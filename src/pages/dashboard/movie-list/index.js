@@ -70,7 +70,7 @@ const MovieList = ({ match }) => {
           </NewResourceBtn>
         </ButtonsContainer>
         <GridContainer>
-          {data.getAllMovies && data.getAllMovies.lenght > 0 ? (
+          {data.getAllMovies && data.getAllMovies.length > 0 ? (
             data.getAllMovies.map((movie) => (
               <Card key={movie.id} imgUrl={movie.cover}>
                 <>

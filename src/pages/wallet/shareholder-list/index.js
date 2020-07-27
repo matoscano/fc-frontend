@@ -41,7 +41,7 @@ const ShareholderList = ({ match }) => {
       </PageTitle>
       <Rectangle additionalStyle={additionalStyle}>
         <GridContainer>
-          {data.getAllShareholders && data.getAllShareholders.lenght > 0 ? (
+          {data.getAllShareholders && data.getAllShareholders.length > 0 ? (
             data.getAllShareholders.map((shareholder) => (
               <Card key={shareholder.id}>
                 <>
