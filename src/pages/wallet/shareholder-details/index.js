@@ -93,7 +93,7 @@ const ShareholderDetails = ({ match }) => {
           {balance && balance.length > 0 ? (
             <>
               <TotalAmount>
-                Balance amount total: <strong>{totalBalance}€</strong>
+                Total balance: <strong>{totalBalance}€</strong>
               </TotalAmount>
               <DetailsList>
                 {balance.map((balanceTransaction) => {
@@ -102,7 +102,7 @@ const ShareholderDetails = ({ match }) => {
                       Income: {balanceTransaction.amount}€
                       <DetailsListWithLessMargin>
                         <ListItemSecondary>
-                          Transfer: {balanceTransaction.Transfer.id} -{" "}
+                          Transfer: {balanceTransaction.Transfer.description} -{" "}
                           {balanceTransaction.Transfer.amount}€ ({" "}
                           {moment(balanceTransaction.Transfer.createAt).format(
                             "MMM Do YY"

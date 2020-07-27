@@ -40,6 +40,7 @@ const GET_SHAREHOLDER_BY_ID = gql`
         Transfer {
           id
           amount
+          description
           createAt
         }
       }

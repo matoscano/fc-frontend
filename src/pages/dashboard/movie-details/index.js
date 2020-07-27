@@ -96,7 +96,7 @@ const MovieDetails = ({ history, match, location }) => {
           {transfers && transfers.length > 0 ? (
             <>
               <TotalAmount>
-                Transfer amount total: <strong>{totalAmount}€</strong>
+                Total transfer: <strong>{totalAmount}€</strong>
               </TotalAmount>
               <DetailsList>
                 {transfers.map((transfer) => {
