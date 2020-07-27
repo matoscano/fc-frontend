@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled, { css } from "styled-components";
+import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Rectangle from "../../../components/ui/rectangle";
 import Loading from "../../../components/ui/loading";
@@ -102,12 +103,22 @@ const ShareholderDetails = ({ history, match }) => {
           </RectangleTitle>
           {balance && balance.length > 0 ? (
             <>
-              <TotalAmount>Balance amount total: {totalBalance}</TotalAmount>
+              <TotalAmount>Balance amount total: {totalBalance}€</TotalAmount>
               <DetailsList>
                 {balance.map((balanceTransaction) => {
                   return (
                     <li key={balanceTransaction.id}>
-                      {balanceTransaction.amount}
+                      Income: {balanceTransaction.amount}€
+                      <ul>
+                        <li>
+                          Transfer: {balanceTransaction.Transfer.id} -{" "}
+                          {balanceTransaction.Transfer.amount}€ ({" "}
+                          {moment(balanceTransaction.Transfer.createAt).format(
+                            "MMM Do YY"
+                          )}
+                          )
+                        </li>
+                      </ul>
                     </li>
                   );
                 })}

@@ -110,12 +110,12 @@ const MovieDetails = ({ history, match, location }) => {
           </RectangleTitle>
           {transfers && transfers.length > 0 ? (
             <>
-              <TotalAmount>Transfer amount total: {totalAmount}</TotalAmount>
+              <TotalAmount>Transfer amount total: {totalAmount}€</TotalAmount>
               <DetailsList>
                 {transfers.map((transfer) => {
                   return (
                     <li key={transfer.id}>
-                      {transfer.amount} - {transfer.description}
+                      {transfer.amount}€ {transfer.description}
                     </li>
                   );
                 })}
