@@ -10,16 +10,28 @@ Also include custom css for the style, mostly using styled-components approach (
 
 It use storybook for preview our UI components(https://storybook.js.org/). Also use react testing library to test our components(https://testing-library.com/)
 
+It use Formik for create forms(https://formik.org/).
+
 ## ⚛️ How to run locally
 
 Using the command `yarn start` the app runs in development mode.
 
 `IMPORTANT`: We need to provide the url of our backend. Provide a .env file with the valid REACT_APP_FC_API_URL key.
 
-## 🚀 Ready to deploy
+## 🛠 Ready to deploy
 
 Using the command `yarn build` builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
+
+## 🚀 Technologies stack
+
+- React.js
+- GraphQl (Apollo client)
+- HTML & CSS
+- Styled-components
+- Formik
+- Storybook
+- Jest & react testing library
