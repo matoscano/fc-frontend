@@ -33,6 +33,10 @@ const DetailsListWithLessMargin = styled(DetailsList)`
 const MovieCoverWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  & > div {
+    max-width: 15rem;
+  }
 `;
 
 const ShareholderDetails = ({ match }) => {

@@ -3,15 +3,19 @@
 exports[`renders a Card 1`] = `
 <div>
   <div
-    class="sc-AxjAm gxICCX"
+    class="sc-AxjAm jVZFDG"
   >
-    <img
-      alt="img movie"
-      src="https://via.placeholder.com/150"
-      title="Image movie"
-    />
     <div
-      class="sc-AxirZ izgUJV"
+      class="sc-AxirZ eEcGbP"
+    >
+      <img
+        alt="img movie"
+        src="https://via.placeholder.com/150"
+        title="Image movie"
+      />
+    </div>
+    <div
+      class="sc-AxiKw ceAJzB"
     >
       Body
     </div>
