@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a Error 1`] = `
+<div>
+  <section
+    class="sc-AxjAm jhiTqR"
+  >
+    <div
+      class="sc-AxirZ febGTa"
+    >
+      <div
+        class="sc-AxhCb ccMvAG"
+      >
+        <img
+          alt="Error img"
+          src="error.png"
+          title="Error img"
+        />
+      </div>
+      <div
+        class="sc-AxiKw kdkRpp"
+      >
+        Something went wrong...
+      </div>
+    </div>
+  </section>
+</div>
+`;

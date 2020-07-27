@@ -42,7 +42,7 @@ const DetailsListWithoutDecoration = styled.ul`
 `;
 
 const ListItemMain = styled.li`
-  font-size: var(--text-xxl);
+  font-size: var(--text-xl);
   font-weight: var(--text-semibold);
   margin: 1.5rem auto;
 `;

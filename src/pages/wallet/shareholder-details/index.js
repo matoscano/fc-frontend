@@ -4,6 +4,7 @@ import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Rectangle from "../../../components/ui/rectangle";
 import Loading from "../../../components/ui/loading";
+import Error from "../../../components/ui/error";
 import { useQuery } from "@apollo/client";
 import { GET_SHAREHOLDER_BY_ID } from "../../../api/queries";
 import {
@@ -66,6 +67,7 @@ const ShareholderDetails = ({ match }) => {
   }, [data]);
 
   if (loading) return <Loading />;
+  if (error) return <Error />;
 
   return (
     <Container>

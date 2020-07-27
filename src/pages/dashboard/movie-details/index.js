@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import styled from "styled-components";
+import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Button from "../../../components/ui/button";
 import Rectangle from "../../../components/ui/rectangle";
@@ -9,6 +10,7 @@ import {
   GET_ALL_SHAREHOLDERS_BY_MOVIE,
 } from "../../../api/queries";
 import Loading from "../../../components/ui/loading";
+import Error from "../../../components/ui/error";
 import {
   PageTitle,
   rectangleAdditionalStyle,
@@ -17,10 +19,15 @@ import {
   DetailsContainer,
   DetailsList,
   ListItemMain,
+  ListItemSecondary,
 } from "../../../styled-components";
 
 const Container = styled.section`
   position: relative;
+`;
+
+const DetailsListWithLessMargin = styled(DetailsList)`
+  margin-left: 1rem;
 `;
 
 const NewButton = styled(Button)`
@@ -69,6 +76,7 @@ const MovieDetails = ({ history, match, location }) => {
   }, [transferData, shareholderData]);
 
   if (transferLoading || shareholderLoading) return <Loading />;
+  if (transferError || shareholderError) return <Error />;
 
   return (
     <Container>
@@ -90,7 +98,13 @@ const MovieDetails = ({ history, match, location }) => {
                 {transfers.map((transfer) => {
                   return (
                     <ListItemMain key={transfer.id}>
-                      {transfer.amount}€ {transfer.description}
+                      Income: {transfer.amount}€
+                      <DetailsListWithLessMargin>
+                        <ListItemSecondary>
+                          {transfer.description} ({" "}
+                          {moment(transfer.createAt).format("MMM Do YY")})
+                        </ListItemSecondary>
+                      </DetailsListWithLessMargin>
                     </ListItemMain>
                   );
                 })}

@@ -5,6 +5,7 @@ import { GET_ALL_SHAREHOLDERS } from "../../../api/queries";
 import Rectangle from "../../../components/ui/rectangle";
 import Card from "../../../components/ui/card";
 import Loading from "../../../components/ui/loading";
+import Error from "../../../components/ui/error";
 import { Link as routerLink } from "react-router-dom";
 import {
   PageTitle,
@@ -28,7 +29,7 @@ const ShareholderList = ({ match }) => {
   });
 
   if (loading) return <Loading />;
-  if (error) return <p>Error :(</p>;
+  if (error) return <Error />;
 
   return (
     <Container>

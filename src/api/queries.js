@@ -51,6 +51,7 @@ const GET_ALL_TRANSFER_BY_MOVIE = gql`
       id
       amount
       description
+      createAt
     }
   }
 `;
