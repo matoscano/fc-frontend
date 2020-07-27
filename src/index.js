@@ -11,11 +11,9 @@ import { ToastProvider } from "react-toast-notifications";
 ReactDOM.render(
   <ApolloProvider client={client}>
     <ToastProvider>
-      <React.StrictMode>
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
-      </React.StrictMode>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
     </ToastProvider>
   </ApolloProvider>,
   document.getElementById("root")

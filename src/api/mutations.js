@@ -10,4 +10,25 @@ const CREATE_MOVIE = gql`
   }
 `;
 
-export { CREATE_MOVIE };
+const CREATE_SHAREHOLDER = gql`
+  mutation createShareholder(
+    $firstName: String
+    $lastName: String
+    $address: String
+    $iban: String
+    $movieId: ID!
+  ) {
+    createShareholder(
+      firstName: $firstName
+      lastName: $lastName
+      address: $address
+      iban: $iban
+      movieId: $movieId
+    ) {
+      id
+      createAt
+    }
+  }
+`;
+
+export { CREATE_MOVIE, CREATE_SHAREHOLDER };

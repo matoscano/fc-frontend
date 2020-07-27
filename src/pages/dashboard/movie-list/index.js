@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_MOVIES } from "../../../api/queries";

@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import MovieList from "./movie-list";
 import MovieForm from "./movie-form";
 import MovieDetails from "./movie-details";
+import ShareholderForm from "./shareholder-form";
 
 const Dashboard = ({ match }) => {
   return (
@@ -18,7 +19,7 @@ const Dashboard = ({ match }) => {
         <Route
           exact
           path={`${match.path}/create-shareholder`}
-          component={MovieForm}
+          component={ShareholderForm}
         />
         <Route
           exact

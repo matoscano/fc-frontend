@@ -61,7 +61,7 @@ const SendButton = styled(Button)`
 `;
 
 const MovieForm = ({ history }) => {
-  const [createMovie, response] = useMutation(CREATE_MOVIE);
+  const [createMovie] = useMutation(CREATE_MOVIE);
   const { addToast } = useToasts();
 
   const handleCreateMovie = async (values) => {
