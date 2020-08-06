@@ -1,6 +1,6 @@
-## FilmChain movies app
+## Movies app
 
-This repository (fc-frontend) contains a react app corresponding with the front end app for FilmChain movies app.
+This repository (fc-frontend) contains a react app corresponding with the front end app for Movies app.
 
 This app was created using create-react-app https://github.com/facebook/create-react-app.
 
